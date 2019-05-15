@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { BrowserRouter, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import TweenMax from "gsap/TweenMax";
 import Draggable from "gsap/Draggable";
+import ThrowPropsPlugin from "../assets/javascripts/gsap/ThrowPropsPlugin";
 
 import Slide from "./Slide";
 import { PeopleData } from "../data/people";
