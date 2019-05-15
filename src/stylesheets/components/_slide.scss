@@ -1,0 +1,22 @@
+.slide {
+  float: left;
+  width: 300px;
+  height: 180px;
+  padding-left: 10px;
+  &__image {
+    padding-bottom: 5px;
+  }
+  &__niche {
+    font-size: 1.2rem;
+    font-weight: 600;
+    margin-bottom: 0;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $text-dark;
+  }
+  &__name {
+    font-size: 1.2rem;
+    margin: 0;
+    color: $text-light;
+  }
+}
