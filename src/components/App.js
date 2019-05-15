@@ -1,8 +1,9 @@
-import React from 'react';
+import React from "react";
+import Hero from "./Hero";
 
 const App = () => (
   <div className="App">
-    <h1>Hello, world!</h1>
+    <Hero />
   </div>
 );
 

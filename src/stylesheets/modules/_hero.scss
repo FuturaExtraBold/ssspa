@@ -1,0 +1,24 @@
+.hero {
+  width: 100%;
+  height: calc(100vh - 200px);
+  background-color: #d8d2c9;
+  &__container {
+    max-width: 2000px;
+  }
+  &__text-container {
+    max-width: 1160px;
+  }
+  &__niche {
+    font-size: 1.6rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ffffff;
+  }
+  &__title {
+    line-height: 1.1;
+    margin: 0;
+    color: #ffffff;
+  }
+}
