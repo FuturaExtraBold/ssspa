@@ -1,7 +1,8 @@
 import React from "react";
 
 const Slide = (props) => {
-  const imgUrl = require(`../images/${props.short_name}.jpg`);
+  // https://github.com/facebook/create-react-app/issues/585#issuecomment-245027117
+  const imgUrl = require(`../assets/images/${props.short_name}.jpg`);
   console.log(imgUrl);
   return (
     <div className="slide">
