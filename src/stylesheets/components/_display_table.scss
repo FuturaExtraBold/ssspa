@@ -1,0 +1,39 @@
+.display-table {
+  display: table;
+  width: 100%;
+  height: 100%;
+  &__cell {
+    display: table-cell;
+    vertical-align: top;
+  }
+  &__cell--middle {
+    vertical-align: middle;
+  }
+}
+.display-table--fixed {
+  table-layout: fixed;
+}
+@media (max-width: $lg-max) {
+  .display-table--block-large {
+    display: block;
+    .display-table__cell {
+      display: block;
+    }
+  }
+}
+@media (max-width: $md-max) {
+  .display-table--block-tablet {
+    display: block;
+    .display-table__cell {
+      display: block;
+    }
+  }
+}
+@media (max-width: $sm-max) {
+  .display-table--block-mobile {
+    display: block;
+    .display-table__cell {
+      display: block;
+    }
+  }
+}
