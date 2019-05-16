@@ -5,14 +5,18 @@
   padding-left: 10px;
   cursor: grab;
   text-decoration: none;
+  &__image-container {
+    overflow: hidden;
+    margin-bottom: 5px;
+  }
   &__image {
-    padding-bottom: 5px;
-    transition: all 0.2s;
+    transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
     opacity: 0.5;
+    transform-origin: center center;
   }
   &__text {
-    opacity: 0;
     transition: all 0.2s;
+    opacity: 0;
   }
   &__niche {
     font-size: 1.2rem;
@@ -30,6 +34,7 @@
 }
 .slide:hover {
   .slide__image {
+    transform: scale(1.3) translateX(-10px);
     opacity: 1;
   }
   .slide__text {
@@ -38,6 +43,7 @@
 }
 .slide--active {
   .slide__image {
+    transform: scale(1.3) translateX(-10px);
     opacity: 1;
   }
   .slide__text {

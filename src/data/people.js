@@ -10,8 +10,8 @@ export const PeopleData = [
     id: "2",
     short_name: "erica",
     name: "Erica Choi",
-    niche: "Project Management",
-    blurb: "Project Manager Erica Choi uses Kajabi to manage her projects."
+    niche: "Event Specialist",
+    blurb: "Event Specialist Erica Choi uses Kajabi to manage her events."
   },
   {
     id: "3",

@@ -1,14 +1,14 @@
 .hero {
   width: 100%;
   height: calc(100vh - 200px);
-  background-color: #d8d2c9;
-  &__bg {
-    background-image: url("../assets/images/andy.jpg");
-    background-position: center center;
-    background-size: cover;
+  background-color: $color-light;
+  &__image-container {
+    overflow: hidden;
   }
   &__container {
     max-width: 2200px;
+    padding-right: 60px;
+    padding-left: 60px;
   }
   &__text-container {
     max-width: 960px;

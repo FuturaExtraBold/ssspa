@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 import { PeopleData } from "../data/people";
 
@@ -14,7 +14,8 @@ class App extends Component {
     });
     return (
       <BrowserRouter>
-        <div className="App">
+        <Route exact path="/" render={ () => <Redirect to="/entrepreneurs/andy" /> } />
+        <div className="app">
           { people }
         </div>
       </BrowserRouter>
