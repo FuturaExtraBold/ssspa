@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 
 import { PeopleData } from "../data/people";
 
+import Header from "./Header";
 import Entrepreneur from "./Entrepreneur";
 
 class App extends Component {
@@ -16,6 +17,7 @@ class App extends Component {
       <BrowserRouter>
         <Route exact path="/" render={ () => <Redirect to="/entrepreneurs/andy" /> } />
         <div className="app">
+          <Header />
           { people }
         </div>
       </BrowserRouter>

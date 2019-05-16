@@ -9,11 +9,14 @@
 @import "base/containers";
 @import "base/grid";
 
+@import "components/buttons";
 @import "components/display_table";
 @import "components/embeds";
 @import "components/images";
+@import "components/logo";
 @import "components/overlay";
 @import "components/slide";
 
+@import "modules/header";
 @import "modules/hero";
 @import "modules/small_carousel";

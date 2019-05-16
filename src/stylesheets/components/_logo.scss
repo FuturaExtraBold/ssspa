@@ -1,0 +1,14 @@
+@mixin logo-default {
+  .svg-symbol {
+    fill: #2e91fc;
+  }
+  .svg-letter {
+    fill: #30373e;
+  }
+}
+@mixin logo-light {
+  .svg-letter,
+  .svg-symbol {
+    fill: #ffffff;
+  }
+}

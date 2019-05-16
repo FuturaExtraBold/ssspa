@@ -1,0 +1,50 @@
+@mixin btn-styles {
+  @include appearance-none;
+  font-family: $font-family-default;
+  font-size: 2.0rem;
+  font-weight: 600;
+  line-height: 1.4;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  padding: 20px 40px;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.2s;
+  text-align: center;
+  white-space: normal;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $text-dark;
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  background-color: #ffffff;
+  &:hover {
+    background-color: darken(#ffffff, 5%);
+  }
+  &:last-child {
+    margin-right: 0;
+  }
+}
+@mixin btn--block {
+  display: block;
+  width: 100%;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.btn {
+  @include btn-styles;
+}
+.btn--block {
+  @include btn--block;
+}
+.btn--nowrap {
+  white-space: nowrap;
+}
+@media (max-width: $sm-max) {
+  .btn {
+    &--block-mobile {
+      @include btn--block;
+    }
+  }
+}
