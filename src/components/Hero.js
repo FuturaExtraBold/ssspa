@@ -6,14 +6,14 @@ const Hero = (props) => {
   return (
     <section className="hero">
       <div className="image-cover">
-        // <img src={ imgUrl } />
+        <img src={ imgUrl } />
       </div>
       <div className="display-table">
         <div className="display-table__cell display-table__cell--middle">
           <div className="container hero__container">
             <div className="hero__text-container">
               <p className="hero__niche">{ props.niche }</p>
-              <h1 className=" display--1 hero__title">Backend Developer Andy Huynh uses Kajabi to beautifully showcase his projects.</h1>
+              <h1 className=" display--1 hero__title">{ props.blurb }</h1>
             </div>
           </div>
         </div>

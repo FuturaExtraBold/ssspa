@@ -1,27 +1,15 @@
-import React, { Component } from "react";
-import { BrowserRouter, Route } from "react-router-dom";
+import React from "react";
 
-// Components
 import Hero from "./Hero";
 import SmallCarousel from "./SmallCarousel";
 
-// Data
-import { PeopleData } from "../data/people";
-
-class Entrepreneur extends Component {
-  render () {
-    let people = PeopleData.map((person) => {
-      return (
-        <Route path={ "/entrepreneurs/" + person.short_name } key={ person.id } render={ () => <Hero { ...person } key={ person.id } /> } />
-      );
-    });
-    return (
-      <BrowserRouter>
-        { people }
-        <SmallCarousel />
-      </BrowserRouter>
-    );
-  }
+const Entrepreneur = (props) => {
+  return (
+    <React.Fragment>
+      <Hero {...props} key={ props.id } />
+      <SmallCarousel />
+    </React.Fragment>
+  );
 }
 
 export default Entrepreneur;
