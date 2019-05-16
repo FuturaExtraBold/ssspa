@@ -1,5 +1,5 @@
 import React from "react";
-import { ReactComponent as KajabiLogo } from "../assets/images/kajabi_logo.svg";
+import { ReactComponent as KajabiLogo } from "../assets/images/ui/kajabi_logo.svg";
 
 const Header = () => {
   return (

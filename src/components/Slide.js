@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 
 const Slide = (props) => {
   // https://github.com/facebook/create-react-app/issues/585#issuecomment-245027117
-  const imgUrl = require(`../assets/images/${ props.short_name }.jpg`);
+  const imgUrl = require(`../assets/images/entrepreneurs/${ props.short_name }.jpg`);
   console.log(imgUrl);
   return (
     <NavLink to={ "/entrepreneurs/" + props.short_name } className="slide" activeClassName="slide--active">
