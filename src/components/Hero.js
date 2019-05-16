@@ -6,8 +6,10 @@ import SplitText from "../assets/javascripts/gsap/SplitText";
 class Hero extends Component {
 
   componentDidMount() {
-    console.log("componentDidMount!");
-    TweenMax.to($(".hero__image-scaler"), 0.75, { scale: 1.05, ease: "easeOutQuad", transformOrigin: "center" });
+    let mySplitText = new SplitText(".hero__title");
+    TweenMax.to($(".hero__image-scaler"), 0.8, { scale: 1.05, ease: "easeOutQuad", transformOrigin: "center" });
+    TweenMax.from($(".hero__niche"), 0.8, { opacity: 0, x: -20 });
+    TweenMax.staggerFrom(mySplitText.chars, 0.8, { opacity: 0, x: -30 }, 0.01);
   }
 
   render() {
