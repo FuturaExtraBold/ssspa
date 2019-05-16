@@ -36,3 +36,11 @@
     opacity: 1;
   }
 }
+.slide--active {
+  .slide__image {
+    opacity: 1;
+  }
+  .slide__text {
+    opacity: 1;
+  }
+}

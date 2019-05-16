@@ -9,25 +9,13 @@ class App extends Component {
     return (
       <BrowserRouter>
         <div className="App">
-          <Route path="/entrepreneurs/erica" component={ Erica } />
-          <Route path="/entrepreneurs/andy" component={ Andy } />
+          <Route path="/entrepreneurs/erica" render={ () => <Hero /> } />
+          <Route path="/entrepreneurs/andy" render={ () => <Hero /> } />
           <SmallCarousel />
         </div>
       </BrowserRouter>
     );
   }
-}
-
-function Erica() {
-  return (
-    <Hero />
-  );
-}
-
-function Andy() {
-  return (
-    <Hero />
-  );
 }
 
 export default App;

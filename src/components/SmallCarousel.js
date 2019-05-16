@@ -41,40 +41,6 @@ class SmallCarousel extends Component {
       </section>
     );
   }
-
 }
-
-// const SmallCarousel = () => {
-//
-//   let $slide = $(".slide");
-//   console.log("slide length:", $slide.length);
-//
-//   $(".slider").css({
-//     "width": $slide.length * $slide.eq(0).outerWidth(),
-//     "opacity": 1
-//   });
-//
-//   Draggable.create(".slider", {
-//     bounds: $(".slider-container"),
-//     dragResistance: 0.4,
-//     throwProps: true,
-//     type: "x",
-//   });
-//
-//   let people = PeopleData.map((person) => {
-//     return (
-//       <Slide { ...person } key={ person.id } />
-//     );
-//   });
-//   return (
-//     <section className="small-carousel">
-//       <div className="slider-container">
-//         <div className="slider">
-//           { people }
-//         </div>
-//       </div>
-//     </section>
-//   );
-// }
 
 export default SmallCarousel;
