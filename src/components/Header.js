@@ -3,7 +3,7 @@ import { ReactComponent as KajabiLogo } from "../assets/images/ui/kajabi_logo.sv
 
 const Header = () => {
   return (
-    <section className="header">
+    <header className="header">
       <div className="header__container">
         <div className="header__left">
           <div className="header__logo">
@@ -20,7 +20,7 @@ const Header = () => {
           <a className="btn header__btn" href="javascript:void(0);">Get Started</a>
         </div>
       </div>
-    </section>
+    </header>
   );
 }
 

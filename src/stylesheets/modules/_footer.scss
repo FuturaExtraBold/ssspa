@@ -1,0 +1,45 @@
+@mixin footer-text {
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.2;
+  display: block;
+  text-transform: uppercase;
+}
+
+.footer {
+  margin-top: 100px;
+  background-color: #111111;
+  &__container {
+    display: flex;
+    padding: 140px 60px;
+  }
+  &__brand {
+    flex-basis: 30%;
+  }
+  &__logo {
+    width: 50px;
+  }
+  .kajabi-logo {
+    @include logo-light;
+  }
+  &__nav {
+    display: flex;
+    flex-basis: 70%;
+    justify-content: space-around;
+  }
+  &__section {
+    flex-basis: 20%;
+  }
+  &__title {
+    @include footer-text;
+    margin-bottom: 25px;
+    color: #ffffff;
+  }
+  &__link {
+    @include footer-text;
+    margin-bottom: 15px;
+    text-decoration: none;
+    letter-spacing: -0.25px;
+    color: #666666;
+  }
+}

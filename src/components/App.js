@@ -5,6 +5,7 @@ import { PeopleData } from "../data/people";
 
 import Header from "./Header";
 import Entrepreneur from "./Entrepreneur";
+import Footer from "./Footer";
 
 class App extends Component {
   render () {
@@ -19,6 +20,7 @@ class App extends Component {
         <div className="app">
           <Header />
           { people }
+          <Footer />
         </div>
       </BrowserRouter>
     );
