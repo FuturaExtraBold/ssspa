@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Link } from "react-router-dom";
 import $ from "jquery";
 import TweenMax from "gsap/TweenMax";
 import Draggable from "gsap/Draggable";
+import ModifiersPlugin from "gsap/ModifiersPlugin";
 import ThrowPropsPlugin from "../assets/javascripts/gsap/ThrowPropsPlugin";
 
 import Slide from "./Slide";
@@ -11,18 +12,61 @@ import { PeopleData } from "../data/people";
 class SmallCarousel extends Component {
 
   componentDidMount() {
-    let $slide = $(".slide");
-    console.log("slide length:", $slide.length);
-    $(".slider").css({
-      "width": $slide.length * $slide.eq(0).outerWidth(),
-      "opacity": 1
+    var $wrapper = $(".small-carousel");
+    var $slide = $(".slide");
+    var $slider = $(".slider");
+    var $proxy = $("<div/>");
+
+    var numSlides = $slide.length;
+    var slideWidth = $slide.outerWidth();
+    var slideHeight = $slide.outerHeight();
+    var wrapWidth = numSlides * slideWidth;
+
+    console.log("numSlides:", numSlides, "slideWidth:", slideWidth, "slideHeight:", slideHeight);
+
+    TweenMax.set($wrapper, { height: slideHeight + 10 });
+    TweenMax.set($slider, { left: -slideWidth });
+
+    for (var i = 1; i <= numSlides; i++) {
+      console.log("this is firing:", i * slideWidth);
+      TweenMax.set($($slide[i]), { x: i * slideWidth });
+    }
+
+    var animation = TweenMax.to(".slide", 1, {
+      x: "+=" + wrapWidth,
+      ease: "linear",
+      paused: true,
+      repeat: -1,
+      modifiers: {
+        x: function(x, target) {
+          x %= wrapWidth;
+          return x;
+        }
+      }
     });
-    Draggable.create(".slider", {
-      bounds: $(".slider-container"),
-      dragResistance: 0.4,
-      throwProps: true,
+
+    Draggable.create($proxy, {
       type: "x",
+      trigger: ".small-carousel",
+      throwProps: true,
+      onDrag: updateProgress,
+      onThrowUpdate: updateProgress,
+      snap: {
+        x: snapX
+      }
     });
+
+    $(window).resize(function() {
+      animation.render(animation.time(), false, true);
+    });
+
+    function snapX(x) {
+      return Math.round(x / slideWidth) * slideWidth;
+    }
+
+    function updateProgress() {
+      animation.progress(this.x / wrapWidth);
+    }
   }
 
   render() {
@@ -33,10 +77,8 @@ class SmallCarousel extends Component {
     });
     return (
       <section className="small-carousel">
-        <div className="slider-container">
-          <div className="slider">
-            { people }
-          </div>
+        <div className="slider">
+          { people }
         </div>
       </section>
     );

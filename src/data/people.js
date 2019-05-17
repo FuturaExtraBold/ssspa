@@ -33,5 +33,54 @@ export const PeopleData = [
     name: "Jay Odebunmi",
     niche: "Partner Partner",
     blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "6",
+    short_name: "allison",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "7",
+    short_name: "alex",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "8",
+    short_name: "allie",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "9",
+    short_name: "nic",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "10",
+    short_name: "veronica",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "11",
+    short_name: "david",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
+  },
+  {
+    id: "12",
+    short_name: "meagan",
+    name: "Jay Odebunmi",
+    niche: "Partner Partner",
+    blurb: "Partner Program Coordinator Jay Odebunmi uses Kajabi to manage partners."
   }
 ];
