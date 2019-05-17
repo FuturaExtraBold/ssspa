@@ -28,14 +28,14 @@
 // Visibility
 .show { display: block !important; }
 .hidden { display: none !important; }
-@media (max-width: $xs-max) { .hidden-xs { display: none !important; }}
-@media (min-width: $sm-min) and (max-width: $sm-max) { .hidden-sm { display: none !important; }}
-@media (min-width: $md-min) and (max-width: $md-max) { .hidden-md { display: none !important; }}
-@media (min-width: $lg-min) and (max-width: $lg-max) { .hidden-lg { display: none !important; }}
-@media (min-width: $xl-min) { .hidden-xl { display: none !important; }}
+@media (max-width: $xs-max) { .hidden--xs { display: none !important; }}
+@media (min-width: $sm-min) and (max-width: $sm-max) { .hidden--sm { display: none !important; }}
+@media (min-width: $md-min) and (max-width: $md-max) { .hidden--md { display: none !important; }}
+@media (min-width: $lg-min) and (max-width: $lg-max) { .hidden--lg { display: none !important; }}
+@media (min-width: $xl-min) { .hidden--xl { display: none !important; }}
 
-@media (max-width: $sm-max) { .hidden-mobile { display: none !important; }}
-@media (min-width: $md-min) { .hidden-desktop { display: none !important; }}
+@media (max-width: $sm-max) { .hidden--mobile { display: none !important; }}
+@media (min-width: $md-min) { .hidden--desktop { display: none !important; }}
 
 // Retina Background Images
 @mixin retina-background-image($file, $type) {

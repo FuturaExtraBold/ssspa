@@ -41,9 +41,9 @@ class Header extends Component {
             </div>
           </div>
           <div className="header__middle">
-            <a className="header__link" href="javascript:void(0);">Features</a>
-            <a className="header__link" href="javascript:void(0);">Blog</a>
-            <a className="header__link" href="javascript:void(0);">Support</a>
+            <a className="header__link hidden--mobile hidden--md" href="javascript:void(0);">Features</a>
+            <a className="header__link hidden--mobile hidden--md" href="javascript:void(0);">Blog</a>
+            <a className="header__link hidden--mobile hidden--md" href="javascript:void(0);">Support</a>
           </div>
           <div className="header__right">
             <a className="header__link" href="javascript:void(0);">Log In</a>

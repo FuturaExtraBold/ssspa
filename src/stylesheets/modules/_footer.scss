@@ -25,7 +25,7 @@
   &__nav {
     display: flex;
     flex-basis: 70%;
-    justify-content: space-around;
+    justify-content: space-between;
   }
   &__section {
     flex-basis: 17%;
@@ -41,5 +41,33 @@
     text-decoration: none;
     letter-spacing: -0.25px;
     color: #777777;
+  }
+}
+@media (max-width: $md-max) {
+  .footer {
+    &__container {
+      display: block;
+      padding: 100px 20px 60px;
+    }
+    &__brand {
+      margin-bottom: 30px;
+    }
+  }
+}
+@media (max-width: $sm-max) {
+  .footer {
+    &__nav {
+      display: block;
+      flex-basis: auto;
+    }
+    &__section {
+      display: block;
+      flex-basis: auto;
+      width: 50%;
+      margin-bottom: 40px;
+    }
+    &__section:last-child {
+      margin-bottom: 0;
+    }
   }
 }

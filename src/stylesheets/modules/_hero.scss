@@ -28,3 +28,17 @@
     color: #ffffff;
   }
 }
+@media (max-width: $lg-max) {
+  .hero {
+    &__container {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+    &__text-container {
+      max-width: 400px;
+    }
+    &__title {
+      font-size: 3.6rem;
+    }
+  }
+}
