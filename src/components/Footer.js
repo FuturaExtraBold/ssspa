@@ -36,13 +36,22 @@ const Footer = () => {
             <a className="footer__link" href="javascript:void(0);">Affiliates</a>
           </div>
           <div className="footer__section">
-            <p className="footer__title">Follow Us</p>
+            <p className="footer__title">Contact</p>
             <a className="footer__link" href="javascript:void(0);">Contact Sales</a>
             <a className="footer__link" href="javascript:void(0);">Contact Support</a>
             <a className="footer__link" href="javascript:void(0);">Instagram</a>
             <a className="footer__link" href="javascript:void(0);">Facebook</a>
             <a className="footer__link" href="javascript:void(0);">Twitter</a>
             <a className="footer__link" href="javascript:void(0);">YouTube</a>
+          </div>
+          <div className="footer__section">
+            <p className="footer__title">Policies</p>
+            <a className="footer__link" href="javascript:void(0);">Customer License Agreement</a>
+            <a className="footer__link" href="javascript:void(0);">Online Privacy Policy</a>
+            <a className="footer__link" href="javascript:void(0);">Terms of Service</a>
+            <a className="footer__link" href="javascript:void(0);">Data Processing Addendum</a>
+            <a className="footer__link" href="javascript:void(0);">Income Disclaimer</a>
+            <a className="footer__link" href="javascript:void(0);">Partner Program Terms</a>
           </div>
         </div>
       </div>

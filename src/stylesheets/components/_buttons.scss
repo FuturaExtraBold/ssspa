@@ -14,7 +14,7 @@
   white-space: normal;
   text-decoration: none;
   text-transform: uppercase;
-  color: $text-dark;
+  color: #000000;
   border: 0;
   border-radius: 0;
   outline: none;
@@ -26,6 +26,10 @@
     margin-right: 0;
   }
 }
+@mixin btn-inverted-styles {
+  color: #ffffff;
+  background-color: #000000;
+}
 @mixin btn--block {
   display: block;
   width: 100%;
@@ -34,6 +38,9 @@
 }
 .btn {
   @include btn-styles;
+}
+.btn--inverted {
+  @include btn-inverted-styles;
 }
 .btn--block {
   @include btn--block;

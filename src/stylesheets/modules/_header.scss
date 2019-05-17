@@ -4,7 +4,7 @@
   width: 100%;
   &__container {
     display: flex;
-    padding: 40px 60px;
+    padding: 20px 60px;
   }
   &__left {
     display: flex;
@@ -38,5 +38,18 @@
     text-decoration: none;
     text-transform: uppercase;
     color: #ffffff;
+  }
+}
+.header--fixed {
+  position: fixed;
+  background-color: #ffffff;
+  .kajabi-logo {
+    @include logo-default;
+  }
+  .header__link {
+    color: #000000;
+  }
+  .header__btn {
+    @include btn-inverted-styles;
   }
 }
