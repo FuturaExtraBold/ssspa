@@ -27,9 +27,9 @@ class SmallCarousel extends Component {
     TweenMax.set($wrapper, { height: slideHeight + 10 });
     TweenMax.set($slider, { left: -slideWidth });
 
-    for (var i = 1; i <= numSlides; i++) {
+    for (var i = 1; i < numSlides; i++) {
       console.log("this is firing:", i * slideWidth);
-      TweenMax.set($($slide[i]), { x: i * slideWidth });
+      TweenMax.set($($slide[i - 1]), { x: i * slideWidth });
     }
 
     var animation = TweenMax.to(".slide", 1, {
