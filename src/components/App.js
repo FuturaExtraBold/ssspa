@@ -13,16 +13,14 @@ class App extends Component {
     super();
     this.state = {
       prevState: {
-        previousPersonIndex: 0,
         zeroSlideXPos: 0,
       }
     };
   }
 
-  handlePrevStateChange = (index, zeroSlideXPos) => {
+  handlePrevStateChange = (zeroSlideXPos) => {
     this.setState({
       prevState: {
-        previousPersonIndex: index,
         zeroSlideXPos: zeroSlideXPos
       }
     });

@@ -1,12 +1,15 @@
 .slider {
   position: relative;
+  z-index: 100;
 }
 .slide {
   position: absolute;
+  z-index: 1;
   width: 300px;
   height: 180px;
   padding-left: 10px;
   text-decoration: none;
+  background-color: #ffffff;
   &__image-container {
     overflow: hidden;
     margin-bottom: 5px;
@@ -44,6 +47,7 @@
   }
 }
 .slide--active {
+  z-index: 1;
   .slide__image {
     transform: scale(1.3) translateX(-10px);
     opacity: 1;

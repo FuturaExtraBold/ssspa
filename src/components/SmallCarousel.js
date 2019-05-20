@@ -42,6 +42,40 @@ class SmallCarousel extends Component {
       });
     }
 
+    let $activeSlide = $(".slide--active");
+    let activeSlideXPos = Math.round($activeSlide.offset().left);
+    let activeSlideIndex = $activeSlide.attr("data-slide-index");
+
+    console.log("zeroSlideXPos:", this.props.prevState.zeroSlideXPos, "activeSlideXPos:", activeSlideXPos, "activeSlideIndex:", activeSlideIndex);
+
+    // var panToActiveSlide = TweenMax.to(".slide", .75, {
+    //   x: "-=" + activeSlideXPos,
+    //   ease: "easeInOutExpo",
+    //   paused: 0,
+    //   repeat: 0,
+    //   modifiers: {
+    //     x: function(x, target) {
+    //       x %= wrapWidth;
+    //       return x;
+    //     }
+    //   },
+    //   onComplete: function() {
+    //     console.log("initial slide complete");
+    //     var zeroSlideXPos = Math.round($($slide[0]).offset().left);
+    //     updatePrevStateProxy(zeroSlideXPos);
+    //   }
+    // });
+    //
+    // panToActiveSlide.render();
+
+    // $slide.on("click", function(event) {
+    //   if (panToActiveSlide.isActive() || animation.isActive()) {
+    //     event.preventDefault();
+    //     event.stopImmediatePropagation();
+    //     return false;
+    //   }
+    // });
+
     var animation = TweenMax.to(".slide", 1, {
       x: "+=" + wrapWidth,
       ease: "linear",
@@ -49,6 +83,7 @@ class SmallCarousel extends Component {
       repeat: -1,
       modifiers: {
         x: function(x, target) {
+          // console.log($(target).attr("data-slide-index"), "x:", x, "x %= wrapWidth:", x %= wrapWidth);
           x %= wrapWidth;
           return x;
         }
@@ -77,15 +112,14 @@ class SmallCarousel extends Component {
     function updateProgress() {
       animation.progress(this.x / wrapWidth);
       var zeroSlideXPos = Math.round($($slide[0]).offset().left);
-      updatePrevStateProxy(0, zeroSlideXPos);
+      updatePrevStateProxy(zeroSlideXPos);
     }
   }
 
   render() {
-    console.log("SmallCarousel render");
-    let people = PeopleData.map((person) => {
+    let people = PeopleData.map((person, index) => {
       return (
-        <Slide { ...person } key={ person.id } />
+        <Slide { ...person } key={ person.id } index={ index } />
       );
     });
     return (

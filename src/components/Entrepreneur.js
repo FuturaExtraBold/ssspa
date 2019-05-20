@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 
 import Hero from "./Hero";
+import NewCarousel from "./NewCarousel";
 import SmallCarousel from "./SmallCarousel";
 
 class Entrepreneur extends Component {
