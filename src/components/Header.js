@@ -7,7 +7,6 @@ import { ReactComponent as KajabiLogo } from "../assets/images/ui/kajabi_logo.sv
 class Header extends Component {
 
   componentDidMount() {
-    console.log("Header componentDidMount");
     let $window = $(window);
     let $header = $(".header");
     $window.on("scroll.header-scroll", () => {
@@ -32,6 +31,7 @@ class Header extends Component {
   }
 
   render () {
+    console.log("Header render");
     return (
       <header className="header">
         <div className="header__container">

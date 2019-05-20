@@ -22,13 +22,12 @@ class SmallCarousel extends Component {
     var slideHeight = $slide.outerHeight();
     var wrapWidth = numSlides * slideWidth;
 
-    console.log("numSlides:", numSlides, "slideWidth:", slideWidth, "slideHeight:", slideHeight);
+    // console.log("numSlides:", numSlides, "slideWidth:", slideWidth, "slideHeight:", slideHeight);
 
     TweenMax.set($wrapper, { height: slideHeight + 10 });
     TweenMax.set($slider, { left: -slideWidth });
 
     for (var i = 1; i < numSlides; i++) {
-      console.log("this is firing:", i * slideWidth);
       TweenMax.set($($slide[i - 1]), { x: i * slideWidth });
     }
 
@@ -42,7 +41,7 @@ class SmallCarousel extends Component {
           x %= wrapWidth;
           return x;
         }
-      }
+      },
     });
 
     Draggable.create($proxy, {
@@ -67,9 +66,18 @@ class SmallCarousel extends Component {
     function updateProgress() {
       animation.progress(this.x / wrapWidth);
     }
+
+    let activeSlideNumber = 0;
+    for (var j = 1; j < numSlides; j++) {
+      if ($($slide[j - 1]).hasClass("slide--active")) {
+        activeSlideNumber = j - 1;
+        console.log("active slide number:", activeSlideNumber);
+      }
+    }
   }
 
   render() {
+    console.log("SmallCarousel render");
     let people = PeopleData.map((person) => {
       return (
         <Slide { ...person } key={ person.id } />

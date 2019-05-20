@@ -8,7 +8,9 @@ import Entrepreneur from "./Entrepreneur";
 import Footer from "./Footer";
 
 class App extends Component {
+
   render () {
+    console.log("App render");
     let people = PeopleData.map((person) => {
       return (
         <Route path={ "/entrepreneurs/" + person.short_name } key={ person.id } render={ () => <Entrepreneur { ...person } key={ person.id } /> } />
