@@ -13,7 +13,6 @@ class Hero extends Component {
   }
 
   render() {
-    console.log("Hero render");
     const imgUrl = require(`../assets/images/entrepreneurs/${this.props.short_name}.jpg`);
     return (
       <section className="hero">

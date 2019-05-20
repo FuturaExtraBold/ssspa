@@ -3,7 +3,6 @@ import { ReactComponent as KajabiLogoK } from "../assets/images/ui/kajabi_logo_k
 
 class Footer extends Component {
   render () {
-    console.log("Footer render");
     return (
       <footer className="footer">
         <div className="footer__container">

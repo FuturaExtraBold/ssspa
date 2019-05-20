@@ -12,6 +12,9 @@ import { PeopleData } from "../data/people";
 class SmallCarousel extends Component {
 
   componentDidMount() {
+
+    console.log("SmallCarousel componentDidMount");
+
     var $wrapper = $(".small-carousel");
     var $slide = $(".slide");
     var $slider = $(".slider");
@@ -22,13 +25,21 @@ class SmallCarousel extends Component {
     var slideHeight = $slide.outerHeight();
     var wrapWidth = numSlides * slideWidth;
 
-    // console.log("numSlides:", numSlides, "slideWidth:", slideWidth, "slideHeight:", slideHeight);
+    let updatePrevStateProxy = this.props.updatePrevState;
 
     TweenMax.set($wrapper, { height: slideHeight + 10 });
     TweenMax.set($slider, { left: -slideWidth });
 
-    for (var i = 1; i < numSlides; i++) {
-      TweenMax.set($($slide[i - 1]), { x: i * slideWidth });
+    for (var i = 0; i < numSlides; i++) {
+      TweenMax.set($($slide[i]), {
+        x: i * slideWidth + this.props.prevState.zeroSlideXPos + slideWidth,
+        modifiers: {
+          x: function(x, target) {
+            x %= wrapWidth;
+            return x;
+          }
+        }
+      });
     }
 
     var animation = TweenMax.to(".slide", 1, {
@@ -41,7 +52,7 @@ class SmallCarousel extends Component {
           x %= wrapWidth;
           return x;
         }
-      },
+      }
     });
 
     Draggable.create($proxy, {
@@ -65,14 +76,8 @@ class SmallCarousel extends Component {
 
     function updateProgress() {
       animation.progress(this.x / wrapWidth);
-    }
-
-    let activeSlideNumber = 0;
-    for (var j = 1; j < numSlides; j++) {
-      if ($($slide[j - 1]).hasClass("slide--active")) {
-        activeSlideNumber = j - 1;
-        console.log("active slide number:", activeSlideNumber);
-      }
+      var zeroSlideXPos = Math.round($($slide[0]).offset().left);
+      updatePrevStateProxy(0, zeroSlideXPos);
     }
   }
 

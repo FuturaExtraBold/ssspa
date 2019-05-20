@@ -9,11 +9,32 @@ import Footer from "./Footer";
 
 class App extends Component {
 
+  constructor() {
+    super();
+    this.state = {
+      prevState: {
+        previousPersonIndex: 0,
+        zeroSlideXPos: 0,
+      }
+    };
+  }
+
+  handlePrevStateChange = (index, zeroSlideXPos) => {
+    this.setState({
+      prevState: {
+        previousPersonIndex: index,
+        zeroSlideXPos: zeroSlideXPos
+      }
+    });
+    console.log("handlePrevStateChange", this.state.prevState);
+  }
+
   render () {
-    console.log("App render");
     let people = PeopleData.map((person) => {
       return (
-        <Route path={ "/entrepreneurs/" + person.short_name } key={ person.id } render={ () => <Entrepreneur { ...person } key={ person.id } /> } />
+        <Route path={ "/entrepreneurs/" + person.short_name } key={ person.id } render={ () =>
+          <Entrepreneur { ...person } key={ person.id } prevState={ this.state.prevState } updatePrevState={ this.handlePrevStateChange } />
+        } />
       );
     });
     return (
