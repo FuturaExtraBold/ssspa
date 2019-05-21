@@ -10,7 +10,6 @@ class Header extends Component {
     let $window = $(window);
     let $header = $(".header");
     $window.on("scroll.header-scroll", () => {
-      console.log("window did scroll");
       if ($window.scrollTop() > 200) {
         $header.addClass("header--fixed");
         if (!TweenMax.isTweening($header) && !$header.isOpen) {
