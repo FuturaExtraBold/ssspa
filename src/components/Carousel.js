@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import $ from "jquery";
 import TweenMax from "gsap/TweenMax";
 import Draggable from "gsap/Draggable";
+import ModifiersPlugin from "gsap/ModifiersPlugin";
 import ThrowPropsPlugin from "../assets/javascripts/gsap/ThrowPropsPlugin";
 
 import Slide from "./Slide";
@@ -13,51 +15,71 @@ class Carousel extends Component {
 
     console.log("NewCarousel componentDidMount");
 
-    var $slide = $(".slide");
-    var $slider = $(".slider");
-    var $sliderContianer = $(".slider-container");
+    let $window = $(window);
+    let $wrapper = $(".small-carousel");
+    let $slide = $(".slide");
+    let $slider = $(".slider");
+    let $proxy = $("<div/>");
 
-    var numSlides = $slide.length;
-    var slideWidth = $slide.outerWidth();
-    var slideHeight = $slide.outerHeight();
+    let numSlides = $slide.length;
+    let slideWidth = $slide.outerWidth();
+    let slideHeight = $slide.outerHeight();
+    let wrapWidth = numSlides * slideWidth;
 
-    let updatePrevStateProxy = this.props.updatePrevState;
+    let isThrowing = false;
 
-    $sliderContianer.css({
-      width: 10 + numSlides * slideWidth
-    });
+    TweenMax.set($wrapper, { height: slideHeight + 10 });
+    TweenMax.set($slider, { left: -slideWidth });
 
-    if (this.props.prevState.zeroSlideXPos !== this.props.prevState.destinationXPos) {
-      console.log("numbers dont' match!");
-      TweenMax.fromTo($slider, 0.25,
-        { x: this.props.prevState.zeroSlideXPos },
-        { x: this.props.prevState.destinationXPos, onUpdate: function() {
-          updatePrevStateProxy(Math.round($($slide[0]).offset().left), null);
-        }}
-      );
-    } else {
-      console.log("numbers match!");
-      TweenMax.set($slider, { x: this.props.prevState.zeroSlideXPos });
+    for (var i = 0; i < numSlides; i++) {
+      TweenMax.set($($slide[i]), { x: i * slideWidth + slideWidth });
     }
 
-    var whatADrag = Draggable.create($slider, {
-      bounds: ".small-carousel",
-      dragResistance: 0.4,
-      onDragEnd: function() {
-        updatePrevStateProxy(Math.round(this.x), Math.round(this.endX));
+    var animation = TweenMax.to(".slide", 1, {
+      x: "+=" + wrapWidth,
+      ease: "linear",
+      paused: true,
+      repeat: -1,
+      modifiers: {
+        x: function(x, target) {
+          x %= wrapWidth;
+          return x;
+        }
+      }
+    });
+
+    Draggable.create($proxy, {
+      clickableTest: (event) => {
+        if (isThrowing) {
+          let thisSlide = $(event).closest(".slide");
+          this.props.history.push(thisSlide.attr("href"));
+        }
       },
-      onThrowUpdate: function() {
-        updatePrevStateProxy(Math.round(this.x), Math.round(this.endX));
+      minimumMovement: 50,
+      onDrag: updateProgress,
+      onThrowComplete: () => {
+        isThrowing = false;
       },
+      onThrowUpdate: updateProgress,
       snap: {
         x: snapX
       },
       throwProps: true,
+      trigger: ".small-carousel",
       type: "x",
+    });
+
+    $window.resize(function() {
+      animation.render(animation.time(), false, true);
     });
 
     function snapX(x) {
       return Math.round(x / slideWidth) * slideWidth;
+    }
+
+    function updateProgress() {
+      isThrowing = true;
+      animation.progress(this.x / wrapWidth);
     }
   }
 
@@ -69,14 +91,12 @@ class Carousel extends Component {
     });
     return (
       <section className="small-carousel">
-        <div className="slider-container">
-          <div className="slider">
-            { people }
-          </div>
+        <div className="slider">
+          { people }
         </div>
       </section>
     );
   }
 }
 
-export default Carousel;
+export default withRouter(Carousel);
