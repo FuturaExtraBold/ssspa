@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import $ from "jquery";
 import TweenMax from "gsap/TweenMax";
 import Draggable from "gsap/Draggable";
@@ -14,16 +15,18 @@ class BensCarousel extends Component {
 
     console.log("NewCarousel componentDidMount");
 
-    var $window = $(window);
-    var $wrapper = $(".small-carousel");
-    var $slide = $(".slide");
-    var $slider = $(".slider");
-    var $proxy = $("<div/>");
+    let $window = $(window);
+    let $wrapper = $(".small-carousel");
+    let $slide = $(".slide");
+    let $slider = $(".slider");
+    let $proxy = $("<div/>");
 
-    var numSlides = $slide.length;
-    var slideWidth = $slide.outerWidth();
-    var slideHeight = $slide.outerHeight();
-    var wrapWidth = numSlides * slideWidth;
+    let numSlides = $slide.length;
+    let slideWidth = $slide.outerWidth();
+    let slideHeight = $slide.outerHeight();
+    let wrapWidth = numSlides * slideWidth;
+
+    let isThrowing = false;
 
     TweenMax.set($wrapper, { height: slideHeight + 10 });
     TweenMax.set($slider, { left: -slideWidth });
@@ -46,15 +49,17 @@ class BensCarousel extends Component {
     });
 
     Draggable.create($proxy, {
-      clickableTest: function(event) {
-        var thisSlide = $(event).closest(".slide");
-        console.log("clickableTest:", thisSlide.attr("data-slide-index"), thisSlide.attr("href"));
+      clickableTest: (event) => {
+        if (isThrowing) {
+          let thisSlide = $(event).closest(".slide");
+          this.props.history.push(thisSlide.attr("href"));
+        }
       },
       minimumMovement: 50,
-      onClick: function() {
-        console.log("thingy clicked");
-      },
       onDrag: updateProgress,
+      onThrowComplete: () => {
+        isThrowing = false;
+      },
       onThrowUpdate: updateProgress,
       snap: {
         x: snapX
@@ -73,6 +78,7 @@ class BensCarousel extends Component {
     }
 
     function updateProgress() {
+      isThrowing = true;
       animation.progress(this.x / wrapWidth);
     }
   }
@@ -93,4 +99,4 @@ class BensCarousel extends Component {
   }
 }
 
-export default BensCarousel;
+export default withRouter(BensCarousel);
