@@ -28,7 +28,7 @@ class Carousel extends Component {
 
     let isThrowing = false;
 
-    TweenMax.set($wrapper, { height: slideHeight + 10 });
+    TweenMax.set($wrapper, { height: slideHeight });
     TweenMax.set($slider, { left: -slideWidth });
 
     for (var i = 0; i < numSlides; i++) {
