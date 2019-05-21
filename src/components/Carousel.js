@@ -13,7 +13,6 @@ class Carousel extends Component {
 
     console.log("NewCarousel componentDidMount");
 
-    var $wrapper = $(".small-carousel");
     var $slide = $(".slide");
     var $slider = $(".slider");
     var $sliderContianer = $(".slider-container");
@@ -32,7 +31,9 @@ class Carousel extends Component {
       console.log("numbers dont' match!");
       TweenMax.fromTo($slider, 0.25,
         { x: this.props.prevState.zeroSlideXPos },
-        { x: this.props.prevState.destinationXPos },
+        { x: this.props.prevState.destinationXPos, onUpdate: function() {
+          updatePrevStateProxy(Math.round($($slide[0]).offset().left), null);
+        }}
       );
     } else {
       console.log("numbers match!");
@@ -41,12 +42,12 @@ class Carousel extends Component {
 
     var whatADrag = Draggable.create($slider, {
       bounds: ".small-carousel",
-      dragResistance: 0.2,
+      dragResistance: 0.4,
       onDragEnd: function() {
-        updatePrevStateProxy(Math.round($($slide[0]).offset().left), Math.round(this.endX));
+        updatePrevStateProxy(Math.round(this.x), Math.round(this.endX));
       },
       onThrowUpdate: function() {
-        updatePrevStateProxy(Math.round($($slide[0]).offset().left), null);
+        updatePrevStateProxy(Math.round(this.x), Math.round(this.endX));
       },
       snap: {
         x: snapX
