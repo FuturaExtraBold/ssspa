@@ -5,6 +5,7 @@ import { PeopleData } from "../data/people";
 
 import Header from "./Header";
 import Entrepreneur from "./Entrepreneur";
+import BensCarousel from "./BensCarousel";
 import Footer from "./Footer";
 
 class App extends Component {
@@ -43,6 +44,7 @@ class App extends Component {
         <div className="app">
           <Header />
           { people }
+          <BensCarousel />
           <Footer />
         </div>
       </BrowserRouter>
