@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Redirect } from "react-router-dom";
 import { PeopleData } from "../data/people";
 
 import Header from "./Header";
-import Entrepreneur from "./Entrepreneur";
+import Hero from "./Hero";
 import Carousel from "./Carousel";
 import Footer from "./Footer";
 
@@ -14,7 +14,7 @@ class App extends Component {
     let people = PeopleData.map((person) => {
       return (
         <Route path={ "/entrepreneurs/" + person.short_name } key={ person.id } render={ () =>
-          <Entrepreneur { ...person } key={ person.id } />
+          <Hero { ...person } key={ person.id } />
         } />
       );
     });

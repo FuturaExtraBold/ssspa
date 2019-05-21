@@ -5,6 +5,9 @@
   &__image-container {
     overflow: hidden;
   }
+  &__bg {
+    background-size: cover;
+  }
   &__container {
     max-width: 2200px;
     padding-right: 60px;

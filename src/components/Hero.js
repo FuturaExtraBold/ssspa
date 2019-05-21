@@ -6,10 +6,11 @@ import SplitText from "../assets/javascripts/gsap/SplitText";
 class Hero extends Component {
 
   componentDidMount() {
+    console.log("Hero componentDidMount");
     let mySplitText = new SplitText(".hero__title");
     TweenMax.to($(".hero__image-scaler"), 0.8, { scale: 1.05, ease: "easeOutQuad", transformOrigin: "center" });
     TweenMax.from($(".hero__niche"), 0.8, { opacity: 0, x: -20 });
-    TweenMax.staggerFrom(mySplitText.chars, 0.8, { opacity: 0, x: -30 }, 0.01);
+    TweenMax.staggerFrom(mySplitText.chars, 0.8, { opacity: 0, x: -30 }, 0.03);
   }
 
   render() {
@@ -18,9 +19,7 @@ class Hero extends Component {
       <section className="hero">
         <div className="overlay hero__image-container">
           <div className="overlay hero__image-scaler">
-            <div className="image-cover">
-              <img className="hero__image" src={ imgUrl } />
-            </div>
+            <div className="overlay hero__bg" style={{ backgroundImage: "url(" + imgUrl + ")" }}></div>
           </div>
         </div>
         <div className="display-table">
