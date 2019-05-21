@@ -14,10 +14,11 @@ class Header extends Component {
       if ($window.scrollTop() > 200) {
         $header.addClass("header--fixed");
         if (!TweenMax.isTweening($header) && !$header.isOpen) {
-          TweenMax.fromTo($header, 0.3, {
+          TweenMax.fromTo($header, 0.5, {
             y: -$header.outerHeight()
           }, {
             y: 0,
+            ease: "easeOutExpo",
             onComplete: function() {
               $header.isOpen = true;
             }

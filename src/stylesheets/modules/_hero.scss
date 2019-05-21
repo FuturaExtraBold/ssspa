@@ -45,3 +45,10 @@
     }
   }
 }
+@media (max-width: $sm-max) {
+  .hero {
+    &__bg {
+      background-position: right 25% top 0;
+    }
+  }
+}
