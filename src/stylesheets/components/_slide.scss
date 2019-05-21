@@ -1,10 +1,26 @@
-.slider {
-  position: relative;
-  z-index: 100;
+// .slider-container {
+//   position: absolute;
+//   width: 100%;
+//   left: 0;
+// }
+// .slider {
+//   position: absolute;
+//   left: 0;
+//   width: 100%;
+// }
+// .slider-container {
+//   position: absolute;
+//   width: 100%;
+//   left: 0;
+//   height: 190px;
+// }
+.slider-container {
+  // padding-right: 10px;
 }
 .slide {
-  position: absolute;
-  z-index: 1;
+  // position: absolute;
+  position: relative;
+  float: left;
   width: 300px;
   height: 180px;
   padding-left: 10px;
@@ -47,7 +63,6 @@
   }
 }
 .slide--active {
-  z-index: 1;
   .slide__image {
     transform: scale(1.3) translateX(-10px);
     opacity: 1;

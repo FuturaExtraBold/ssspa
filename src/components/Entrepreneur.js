@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 
 import Hero from "./Hero";
-import NewCarousel from "./NewCarousel";
-import SmallCarousel from "./SmallCarousel";
+import Carousel from "./Carousel";
 
 class Entrepreneur extends Component {
 
@@ -10,7 +9,7 @@ class Entrepreneur extends Component {
     return (
       <React.Fragment>
         <Hero {...this.props} key={ this.props.id } />
-        <SmallCarousel prevState={ this.props.prevState } updatePrevState={ this.props.updatePrevState } />
+        <Carousel prevState={ this.props.prevState } updatePrevState={ this.props.updatePrevState } />
       </React.Fragment>
     );
   }

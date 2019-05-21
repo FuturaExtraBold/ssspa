@@ -14,17 +14,19 @@ class App extends Component {
     this.state = {
       prevState: {
         zeroSlideXPos: 0,
+        destinationXPos: 0
       }
     };
   }
 
-  handlePrevStateChange = (zeroSlideXPos) => {
+  handlePrevStateChange = (zeroSlideXPos, destinationXPos) => {
     this.setState({
       prevState: {
-        zeroSlideXPos: zeroSlideXPos
+        zeroSlideXPos: zeroSlideXPos || this.state.prevState.zeroSlideXPos,
+        destinationXPos: destinationXPos || this.state.prevState.destinationXPos
       }
     });
-    console.log("handlePrevStateChange", this.state.prevState);
+    console.log("zeroSlideXPos:", this.state.prevState.zeroSlideXPos, "destinationXPos:", this.state.prevState.destinationXPos);
   }
 
   render () {
