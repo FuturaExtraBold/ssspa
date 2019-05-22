@@ -6,6 +6,7 @@ import { PeopleData } from "../data/people";
 import Header from "./Header";
 import Hero from "./Hero";
 import Carousel from "./Carousel";
+import Spreader from "./Spreader";
 import CTA from "./CTA";
 import Footer from "./Footer";
 
@@ -26,6 +27,7 @@ class App extends Component {
           <Header />
           { people }
           <Carousel />
+          <Spreader />
           <CTA />
           <Footer />
         </div>
