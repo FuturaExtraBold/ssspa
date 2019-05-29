@@ -13,7 +13,7 @@ class Spreader extends Component {
     let $box = $(".spreader__box");
     let $container = $(".spreader__container");
     let animationTime = 20;
-    let animationEase = "easeOutExpo";
+    let animationEase = "linear";
     let boxHalf = $($box[0]).outerWidth() / 2;
 
     let topY = $container.outerHeight() / 2 - boxHalf;
@@ -29,21 +29,29 @@ class Spreader extends Component {
     TweenMax.set($(".spreader__box--0"), { scale: 1, opacity: 1 });
 
     let tl = new TimelineMax({ paused: true });
-    tl.add(TweenMax.to($(".spreader__box--1"), animationTime, { scale: 1, opacity: 1, x: leftX, y: 0, ease: animationEase }));
-    tl.add(TweenMax.to($(".spreader__box--2"), animationTime, { scale: 1, opacity: 1, x: secondX, y: secondY, ease: animationEase, delay: 0.2 }));
-    tl.add(TweenMax.to($(".spreader__box--3"), animationTime, { scale: 1, opacity: 1, x: fourthX, y: secondY, ease: animationEase, delay: 0.2 }));
-    tl.add(TweenMax.to($(".spreader__box--4"), animationTime, { scale: 1, opacity: 1, x: 0, y: topY, ease: animationEase, delay: 0.4 }));
-    tl.add(TweenMax.to($(".spreader__box--5"), animationTime, { scale: 1, opacity: 1, x: rightX, y: topY, ease: animationEase, delay: 0.4 }));
-    tl.add(TweenMax.to($(".spreader__box--6"), animationTime, { scale: 1, opacity: 1, x: secondX, y: fourthY, ease: animationEase, delay: 0.6 }));
-    tl.add(TweenMax.to($(".spreader__box--7"), animationTime, { scale: 1, opacity: 1, x: fourthX, y: fourthY, ease: animationEase, delay: 0.6 }));
-    tl.add(TweenMax.to($(".spreader__box--8"), animationTime, { scale: 1, opacity: 1, x: leftX, y: bottomY, ease: animationEase, delay: 0.8 }));
+    tl.to($(".spreader__box--1"), animationTime, { scale: 1, opacity: 1, x: leftX, y: 0, ease: animationEase }, "round1")
+      .to($(".spreader__box--2"), animationTime, { scale: 1, opacity: 1, x: secondX, y: secondY, ease: animationEase }, "round2")
+      .to($(".spreader__box--3"), animationTime, { scale: 1, opacity: 1, x: fourthX, y: secondY, ease: animationEase }, "round2")
+      .to($(".spreader__box--4"), animationTime, { scale: 1, opacity: 1, x: 0, y: topY, ease: animationEase}, "round3")
+      .to($(".spreader__box--5"), animationTime, { scale: 1, opacity: 1, x: rightX, y: topY, ease: animationEase }, "round3")
+      .to($(".spreader__box--6"), animationTime, { scale: 1, opacity: 1, x: secondX, y: fourthY, ease: animationEase }, "round4")
+      .to($(".spreader__box--7"), animationTime, { scale: 1, opacity: 1, x: fourthX, y: fourthY, ease: animationEase }, "round4")
+      .to($(".spreader__box--8"), animationTime, { scale: 1, opacity: 1, x: leftX, y: bottomY, ease: animationEase }, "round5");
 
     let windowHeightHalf = $window.outerHeight() / 2;
     let containerTop = $container.offset().top - windowHeightHalf;
     let containerHeightHalf = $container.outerHeight() / 2;
     let percentageComplete = 0;
+    let scrollTimer;
+
+    function scrollStopped() {
+      console.log("scroll stopped");
+      // TweenMax.to(tl, 0.1, { progress: "+=" + 0.1 });
+    }
 
     $window.on("scroll.spreader", function() {
+      clearTimeout(scrollTimer);
+      scrollTimer = setTimeout(scrollStopped, 150);
       let scrollTop = $window.scrollTop();
       if (containerTop >= scrollTop) {
         percentageComplete = 0;
@@ -53,7 +61,8 @@ class Spreader extends Component {
         percentageComplete = 1;
       }
       console.log("percentageComplete:", percentageComplete);
-      tl.progress(percentageComplete);
+      // tl.progress(percentageComplete);
+      TweenMax.to(tl, 1, { progress: percentageComplete, ease: "easeOutQuad" }, 0.1);
     });
   }
 
